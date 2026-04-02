@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chroma-memory-index"
+version = "1.0.0"
+description = "Chroma-backed semantic memory & skill index for AI agents (ARM64-safe)"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Proto Labs", email = "proto.labs.rnd@gmail.com" }]
+dependencies = [
+    "chromadb>=0.4.0",
+    "httpx>=0.25.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0", "pytest-cov>=4.0"]
+
+[project.scripts]
+chroma-memory-index = "chroma_memory_index.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
